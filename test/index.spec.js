@@ -8,21 +8,6 @@ const validAttributes3 = { start: [2002, 10, 5, 5, 0], duration: { hours: 1 } }
 
 describe('ics', () => {
   describe('.createEvent', () => {
-    it('returns an error or value when not passed a callback', () => {
-      const event1 = createEvent(validAttributes)
-      const event2 = createEvent(invalidAttributes)
-
-      expect(event1.error).to.be.null
-      expect(event1.value).to.be.a('string')
-      expect(event2.error).to.exist
-    })
-    it('returns an error when passed an empty object', (done) => {
-      createEvent({}, (error, success) => {
-        done()
-        expect(error.name).to.equal('ValidationError')
-        expect(success).not.to.exist
-      })
-    })
     it('returns a node-style callback', (done) => {
       createEvent(validAttributes, (error, success) => {
         done()
@@ -30,16 +15,6 @@ describe('ics', () => {
         expect(success).to.contain('DTSTART:200010')
       })
     })
-    it('returns unique uid\'s for multiple calls', () => {
-      const event1 = createEvent(validAttributes);
-      const event2 = createEvent(validAttributes2);
-
-      var uidRegex = /UID:(.*)/;
-
-      const event1Id = uidRegex.exec(event1.value)[1];
-      const event2Id = uidRegex.exec(event2.value)[1];
-      expect(event1Id).to.not.equal(event2Id);
-    });
   })
 
   describe('.createEvents', () => {
@@ -60,11 +35,6 @@ describe('ics', () => {
         const { error, value } = createEvents([validAttributes, validAttributes2, validAttributes3])
         expect(error).to.be.null
         expect(value).to.contain('BEGIN:VCALENDAR')
-      })
-      it('returns an error and a null value when passed an invalid event', () => {
-        const { error, value } = createEvents([validAttributes, validAttributes2, invalidAttributes])
-        expect(error).to.exist
-        expect(value).not.to.exist
       })
     })
     describe('when a callback is provided', () => {

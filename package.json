@@ -1,7 +1,7 @@
 {
-  "name": "ics",
-  "version": "2.18.0",
-  "description": "iCal (ics) file generator",
+  "name": "ics-browser",
+  "version": "2.19.0",
+  "description": "ics file generator for the browser",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adamgibbons/ics.git"
+    "url": "https://github.com/the0neyouseek/ics-browser.git"
   },
   "keywords": [
     "ical",
@@ -27,9 +27,9 @@
   "author": "Adam Gibbons <adam@agibbons.com> (http://agibbons.com/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/adamgibbons/ics/issues"
+    "url": "https://github.com/the0neyouseek/ics-browser/issues"
   },
-  "homepage": "https://github.com/adamgibbons/ics",
+  "homepage": "https://github.com/the0neyouseek/ics-browser",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -40,7 +40,6 @@
     "mocha": "^6.2.1"
   },
   "dependencies": {
-    "@hapi/joi": "^15.1.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "uuid": "^3.3.3"

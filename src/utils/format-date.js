@@ -26,7 +26,7 @@ export default function formatDate(args = [], outputType = 'utc', inputType = 'l
   if (args.length === 3) {
     return moment([year, month - 1, date]).format('YYYYMMDD')
   }
-  
+
   if (inputType === 'local') {
     return formatLocalDate([year, month, date, hours, minutes, seconds || 0], outputType);
   }
