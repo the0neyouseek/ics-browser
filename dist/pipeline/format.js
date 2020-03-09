@@ -50,11 +50,11 @@ function formatEvent() {
   icsFormat += (0, _utils.foldLine)("SUMMARY:".concat(title ? (0, _utils.setSummary)(title) : title)) + '\r\n';
   icsFormat += "DTSTAMP:".concat(timestamp, "\r\n"); // All day events like anniversaries must be specified as VALUE type DATE
 
-  icsFormat += "DTSTART".concat(start && start.length == 3 ? ";VALUE=DATE" : "", ":").concat((0, _utils.formatDate)(start, startOutputType || startType, startInputType), "\r\n"); // End is not required for all day events on single days (like anniversaries)
+  icsFormat += "DTSTART".concat(start && start.length == 3 ? ";VALUE=DATE" : "", ":").concat((0, _utils.formatDate)(start), "\r\n"); // End is not required for all day events on single days (like anniversaries)
 
   if (!((0, _isEqual["default"])(start, end) && end && end.length == 3)) {
     if (end) {
-      icsFormat += "DTEND".concat(end.length == 3 ? ";VALUE=DATE" : "", ":").concat((0, _utils.formatDate)(end, endOutputType || startOutputType || startType, endInputType || startInputType), "\r\n");
+      icsFormat += "DTEND".concat(end.length == 3 ? ";VALUE=DATE" : "", ":").concat((0, _utils.formatDate)(end), "\r\n");
     }
   }
 

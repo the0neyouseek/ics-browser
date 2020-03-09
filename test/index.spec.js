@@ -2,9 +2,9 @@ import { expect } from 'chai'
 import { createEvent, createEvents } from '../src'
 
 const invalidAttributes = { start: [] }
-const validAttributes = { start: [2000, 10, 5, 5, 0], duration: { hours: 1 } }
-const validAttributes2 = { start: [2001, 10, 5, 5, 0], duration: { hours: 1 } }
-const validAttributes3 = { start: [2002, 10, 5, 5, 0], duration: { hours: 1 } }
+const validAttributes = { start: new Date('2000-10-05T05:00:00'), duration: { hours: 1 } }
+const validAttributes2 = { start: new Date('2001-10-05T05:00:00'), duration: { hours: 1 } }
+const validAttributes3 = { start: new Date('2002-10-05T05:00:00'), duration: { hours: 1 } }
 
 describe('ics', () => {
   describe('.createEvent', () => {

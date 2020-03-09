@@ -15,7 +15,7 @@ describe('utils.setAlarm', () => {
         minutes: 4,
         seconds: 50
       },
-      trigger: [1997, 2, 17, 6, 30],
+      trigger: new Date("1997-02-17T06:30:00"),
       summary: 'Bar baz'
     }
     const alarm = setAlarm(attributes)

@@ -15,7 +15,7 @@ describe('pipeline.build properties', () => {
   describe('productId', () => {
     it('sets a default', () => {
       const event = buildEvent()
-      expect(event.productId).to.equal('adamgibbons/ics')
+      expect(event.productId).to.equal('the0neyouseek/ics')
     })
     it('sets a product id', () => {
       const event = buildEvent({ productId: 'myProductId' })
@@ -51,17 +51,17 @@ describe('pipeline.build properties', () => {
   describe('start and end', () => {
     it('defaults to UTC date-time format', () => {
       const event = buildEvent({
-        start: [2017, 1, 19, 1, 30],
-        end: [2017, 1, 19, 12, 0]
+        start: new Date('2017-01-19T01:30:00'),
+        end: new Date('2017-01-19T012:00:00')
       })
-      expect(event.start).to.be.an('array')
-      expect(event.end).to.be.an('array')
+      expect(event.start).to.be.a('date')
+      expect(event.end).to.be.a('date')
     })
   })
   describe('end', () => {
     it('defaults to UTC date-time format', () => {
-      const event = buildEvent({ start: [2017, 1, 19, 1, 30] })
-      expect(event.start).to.be.an('array')
+      const event = buildEvent({ start: new Date('2017-01-19T01:30:00') })
+      expect(event.start).to.be.a('date')
     })
   })
   describe('description', () => {
@@ -152,7 +152,7 @@ describe('pipeline.build properties', () => {
       const event = buildEvent({
         alarms: [{
           action: 'audio',
-          trigger: [1997, 3, 17, 13, 30, 0],
+          trigger: new Date('2017-01-19T01:35:00'),
           repeat: 4,
           duration: {
             hours: 1

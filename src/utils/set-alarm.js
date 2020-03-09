@@ -1,6 +1,6 @@
 import formatDate from './format-date'
 import foldLine from './fold-line'
-import isArray from 'lodash/isArray'
+import { isDate } from 'date-fns'
 
 function setDuration ({
   weeks,
@@ -22,7 +22,7 @@ function setDuration ({
 
 function setTrigger (trigger) {
   let formattedString = ''
-  if(isArray(trigger)) {
+  if(isDate(trigger)) {
     formattedString = `TRIGGER;VALUE=DATE-TIME:${formatDate(trigger)}\r\n`
   } else {
     let alert = trigger.before ? '-' : ''

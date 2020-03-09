@@ -1,8 +1,8 @@
-import uuid from 'uuid/v4'
+import { v4 } from 'uuid'
 import { formatEvent, buildEvent } from './pipeline'
 
 function assignUniqueId(event) {
-  event.uid = event.uid || uuid()
+  event.uid = event.uid || v4()
   return event
 }
 

@@ -53,12 +53,12 @@ export default function formatEvent(attributes = {}) {
   icsFormat += `DTSTAMP:${timestamp}\r\n`
 
   // All day events like anniversaries must be specified as VALUE type DATE
-  icsFormat += `DTSTART${start && start.length == 3 ? ";VALUE=DATE" : ""}:${formatDate(start, startOutputType || startType, startInputType)}\r\n`
+  icsFormat += `DTSTART${start && start.length == 3 ? ";VALUE=DATE" : ""}:${formatDate(start)}\r\n`
 
   // End is not required for all day events on single days (like anniversaries)
   if (!(isEqual(start, end) && end && end.length == 3)) {
     if (end) {
-      icsFormat += `DTEND${end.length == 3 ? ";VALUE=DATE" : ""}:${formatDate(end, endOutputType || startOutputType || startType, endInputType || startInputType)}\r\n`;
+      icsFormat += `DTEND${end.length == 3 ? ";VALUE=DATE" : ""}:${formatDate(end)}\r\n`;
     }
   }
 
@@ -77,7 +77,7 @@ export default function formatEvent(attributes = {}) {
       icsFormat += foldLine(`ATTENDEE;${setContact(attendee)}`) + '\r\n'
     })
   }
-  
+
   if (alarms) {
     alarms.map(function (alarm) {
       icsFormat += setAlarm(alarm)

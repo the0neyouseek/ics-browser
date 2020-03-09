@@ -9,30 +9,6 @@ Object.defineProperty(exports, "formatDate", {
     return _formatDate["default"];
   }
 });
-Object.defineProperty(exports, "formatLocalDateAsUTC", {
-  enumerable: true,
-  get: function get() {
-    return _formatLocalDateAsUtc["default"];
-  }
-});
-Object.defineProperty(exports, "formatLocalDateAsLocal", {
-  enumerable: true,
-  get: function get() {
-    return _formatLocalDateAsLocal["default"];
-  }
-});
-Object.defineProperty(exports, "formatUTCDateAsUTC", {
-  enumerable: true,
-  get: function get() {
-    return _formatUtcDateAsUtc["default"];
-  }
-});
-Object.defineProperty(exports, "formatUTCDateAsLocal", {
-  enumerable: true,
-  get: function get() {
-    return _formatUtcDateAsLocal["default"];
-  }
-});
 Object.defineProperty(exports, "setGeolocation", {
   enumerable: true,
   get: function get() {
@@ -83,14 +59,6 @@ Object.defineProperty(exports, "foldLine", {
 });
 
 var _formatDate = _interopRequireDefault(require("./format-date"));
-
-var _formatLocalDateAsUtc = _interopRequireDefault(require("./format-local-date-as-utc"));
-
-var _formatLocalDateAsLocal = _interopRequireDefault(require("./format-local-date-as-local"));
-
-var _formatUtcDateAsUtc = _interopRequireDefault(require("./format-utc-date-as-utc"));
-
-var _formatUtcDateAsLocal = _interopRequireDefault(require("./format-utc-date-as-local"));
 
 var _setGeolocation = _interopRequireDefault(require("./set-geolocation"));
 

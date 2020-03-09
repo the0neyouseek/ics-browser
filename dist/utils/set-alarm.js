@@ -9,7 +9,7 @@ var _formatDate = _interopRequireDefault(require("./format-date"));
 
 var _foldLine = _interopRequireDefault(require("./fold-line"));
 
-var _isArray = _interopRequireDefault(require("lodash/isArray"));
+var _dateFns = require("date-fns");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32,7 +32,7 @@ function setDuration(_ref) {
 function setTrigger(trigger) {
   var formattedString = '';
 
-  if ((0, _isArray["default"])(trigger)) {
+  if ((0, _dateFns.isDate)(trigger)) {
     formattedString = "TRIGGER;VALUE=DATE-TIME:".concat((0, _formatDate["default"])(trigger), "\r\n");
   } else {
     var alert = trigger.before ? '-' : '';

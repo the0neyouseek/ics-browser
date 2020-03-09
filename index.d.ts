@@ -1,8 +1,3 @@
-export type DateArray =
-  | [number, number, number, number, number]
-  | [number, number, number, number]
-  | [number, number, number];
-
 export type DurationObject = {
   weeks?: number;
   days?: number;
@@ -50,14 +45,14 @@ export type ActionType = 'AUDIO' | 'DISPLAY' | 'EMAIL' | 'PROCEDURE';
 
 export type Alarm = {
   action?: ActionType;
-  trigger?: DurationObject; // @todo DateArray | DurationObject;
+  trigger?: Date | DurationObject; // @todo DateArray | DurationObject;
   repeat?: number;
   attachType?: string;
   attach?: string;
 };
 
 export type EventAttributes = {
-  start: DateArray;
+  start: Date;
   startInputType?: 'local' | 'utc';
   startOutputType?: 'local' | 'utc';
 
@@ -84,7 +79,7 @@ export type EventAttributes = {
   method?: string;
   recurrenceRule?: string;
   sequence?: number;
-} & ({ end: DateArray } | { duration: DurationObject });
+} & ({ end: Date } | { duration: DurationObject });
 
 export type ReturnObject = { error?: Error; value?: string };
 

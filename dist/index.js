@@ -6,14 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.createEvent = createEvent;
 exports.createEvents = createEvents;
 
-var _v = _interopRequireDefault(require("uuid/v4"));
+var _uuid = require("uuid");
 
 var _pipeline = require("./pipeline");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 function assignUniqueId(event) {
-  event.uid = event.uid || (0, _v["default"])();
+  event.uid = event.uid || (0, _uuid.v4)();
   return event;
 }
 
