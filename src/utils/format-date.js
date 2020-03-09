@@ -1,5 +1,5 @@
-import { format } from 'date-fns';
+import { format } from 'date-fns-tz';
 
 export default function formatDate(date = Date.now()) {
-  return format(date, "yyyyMMdd'T'HHmm'00'") + 'Z';
+  return format(date, "yyyyMMdd'T'HHmmssX", { timeZone: 'UTC' });
 }

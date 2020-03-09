@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = formatDate;
 
-var _dateFns = require("date-fns");
+var _dateFnsTz = require("date-fns-tz");
 
 function formatDate() {
   var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Date.now();
-  return (0, _dateFns.format)(date, "yyyyMMdd'T'HHmm'00'") + 'Z';
+  return (0, _dateFnsTz.format)(date, "yyyyMMdd'T'HHmmssX", {
+    timeZone: 'UTC'
+  });
 }
