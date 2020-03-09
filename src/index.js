@@ -51,14 +51,11 @@ export function createEvent (attributes, cb) {
 
   assignUniqueId(attributes)
 
+  const value = buildEvent(attributes)
+  let event = ''
+
   if (!cb) {
     // No callback, so return error or value in an object
-    const { error, value } = buildEvent(attributes)
-
-    if (error) return { error, value }
-
-    let event = ''
-
     try {
       event = formatEvent(value)
     } catch(error) {
@@ -68,12 +65,13 @@ export function createEvent (attributes, cb) {
     return { error: null, value: event }
   }
 
-  // Return a node-style callback
-  const { error, value } = buildEvent(attributes)
+  try {
+    event = formatEvent(value)
+  } catch(error) {
+    return cb(error)
+  }
 
-  if (error) return cb(error)
-
-  return cb(null, formatEvent(value))
+  return cb(null, event)
 }
 
 export function createEvents (events, cb) {

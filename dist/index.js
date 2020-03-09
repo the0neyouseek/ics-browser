@@ -87,21 +87,13 @@ function createEvent(attributes, cb) {
   }
 
   assignUniqueId(attributes);
+  var value = (0, _pipeline.buildEvent)(attributes);
+  var event = '';
 
   if (!cb) {
     // No callback, so return error or value in an object
-    var _buildEvent = (0, _pipeline.buildEvent)(attributes),
-        _error = _buildEvent.error,
-        _value = _buildEvent.value;
-
-    if (_error) return {
-      error: _error,
-      value: _value
-    };
-    var event = '';
-
     try {
-      event = (0, _pipeline.formatEvent)(_value);
+      event = (0, _pipeline.formatEvent)(value);
     } catch (error) {
       return {
         error: error,
@@ -113,15 +105,15 @@ function createEvent(attributes, cb) {
       error: null,
       value: event
     };
-  } // Return a node-style callback
+  }
 
+  try {
+    event = (0, _pipeline.formatEvent)(value);
+  } catch (error) {
+    return cb(error);
+  }
 
-  var _buildEvent2 = (0, _pipeline.buildEvent)(attributes),
-      error = _buildEvent2.error,
-      value = _buildEvent2.value;
-
-  if (error) return cb(error);
-  return cb(null, (0, _pipeline.formatEvent)(value));
+  return cb(null, event);
 }
 
 function createEvents(events, cb) {
